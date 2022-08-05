@@ -1,0 +1,7 @@
+{
+  "name": "Dompetku",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
