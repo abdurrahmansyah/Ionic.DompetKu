@@ -1,0 +1,35 @@
+.garis {
+    height: 5px;
+    width: 50px;
+    background-color: rgb(175, 174, 174);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.status {
+    color: white;
+    // background-color: var(--ion-color-hk-ppid-three);
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.picture {
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}

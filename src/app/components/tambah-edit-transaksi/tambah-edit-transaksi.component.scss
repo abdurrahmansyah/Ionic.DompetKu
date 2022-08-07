@@ -1,0 +1,58 @@
+.contentView {
+    padding-top: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.buttonBack {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-group {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    width: fit-content;
+    border-radius: 5px !important;
+}
+
+.border {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+}
+
+.borderSolid {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+    background-color: var(--ion-color-rid-goodblue-one); 
+    height: 100%;
+}
+
+.icon {
+    display: inline-block;
+    font-size: 20px;
+    color: var(--ion-color-rid-goodblue-one);
+    vertical-align: middle;
+}
+
+.text {
+    display: inline-block;
+    vertical-align: middle;
+}

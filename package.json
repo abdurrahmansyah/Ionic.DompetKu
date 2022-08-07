@@ -1,7 +1,7 @@
 {
   "name": "Dompetku",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Nur Ridho Abdurrahmansyah",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -24,6 +24,7 @@
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
+    "@capacitor/storage": "^1.2.5",
     "@ionic/angular": "^6.1.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

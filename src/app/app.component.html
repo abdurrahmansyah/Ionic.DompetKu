@@ -3,25 +3,91 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
+          <!-- <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note> -->
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <div>
+            <div class="likeCard" style="background-image: url(../../assets/images/img-1.png); background-size: 100%;">
+              <div style="padding-left: 30px; padding-top: 35px;">
+                <ion-text style="color: white; font-size: 9vw; font-weight: 700;">DompetKu</ion-text> <br>
+                <!-- <ion-text style="color: white; font-size: 5vw; font-weight: 300;">Uangku</ion-text> -->
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+
+          <!-- <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[page.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/folder/Home" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Kategori</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/folder/Menu Kategori" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="layers"></ion-icon>
+              <ion-label>Menu Kategori</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Laporan</ion-list-header>
+
+          <!-- <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/folder/Riwayat Transaksi Terakhir" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="clipboard"></ion-icon>
+              <ion-label>Riwayat Transaksi</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/folder/Laporan Bulanan" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="receipt"></ion-icon>
+              <ion-label>Laporan Bulanan</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Lainnya</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/folder/Tentang" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="help-circle"></ion-icon>
+              <ion-label>Tentang</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list id="labels-list">
+        <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
             <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
             <ion-label>{{ label }}</ion-label>
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

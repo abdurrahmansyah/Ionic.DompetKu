@@ -1,0 +1,45 @@
+<div>
+  <br>
+  <ion-item lines="none" button (click)="CloseTambahEditKategori()">
+    <ion-icon color="hk-ppid-main" name="close"></ion-icon>
+  </ion-item>
+
+  <ion-text style="font-size: 20px; font-weight: 700; color: #2c365a" class="ion-padding">Tambah Kategori</ion-text>
+  <br>
+
+  <div class="ion-padding">
+    <ion-text style="font-size: 12px; color: #2c365a; line-height: 25px;">Nama Kategori</ion-text>
+    <br>
+    <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="text" placeholder="Nama Kategori..."
+      [(ngModel)]="namaKategori" class="ion-no-padding"></ion-input>
+
+    <hr style="height: 10px; margin: 0px;">
+    <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+    <hr style="height: 10px; margin: 0px;">
+
+    <ion-text style="font-size: 12px; color: #2c365a; line-height: 25px;">Jenis Kategori</ion-text>
+    <br>
+    <ion-select interface="action-sheet" placeholder="Jenis Kategori..." mode="ios" [(ngModel)]="jenisKategori"
+      style="font-size: 16px; font-weight: 700; color: #2c365a" class="ion-no-padding">
+      <ion-select-option value="Pemasukan" selected>Pemasukan</ion-select-option>
+      <ion-select-option value="Pengeluaran">Pengeluaran</ion-select-option>
+    </ion-select>
+
+    <br>
+    <br>
+
+    <ion-row *ngIf="isTambahKategori" class="status" style="background-color: #2c365a;" button
+      (click)="TambahKategori()">
+      <ion-col style="padding: 0px;" class="ion-align-self-center">
+        <ion-text>Tambah Kategori</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!isTambahKategori" class="status" style="background-color: #2c365a;" button
+      (click)="EditKategori()">
+      <ion-col style="padding: 0px;" class="ion-align-self-center">
+        <ion-text>Edit Kategori</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

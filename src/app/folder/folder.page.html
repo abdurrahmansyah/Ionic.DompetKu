@@ -1,21 +1,309 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ folder }}</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="isPageHome" class="pageHome">
+    <br>
+    <br>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-row style="padding: 0px 16px; ">
+      <ion-col size="3">
+        <ion-buttons>
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
+        <ion-text style="font-size: 20px; font-weight: 500;">Home</ion-text>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+      </ion-col>
+    </ion-row>
+
+    <div class="ion-padding">
+      <ion-text style="font-size: 12px; color: #b3b8cc">{{txtDayNow}}</ion-text>
+      <br>
+      <hr style="height: 10px; margin: 0px;">
+
+      <ion-text style="font-size: 20px; font-weight: 700; color: #2c365a">DompetKu</ion-text>
+      <br>
+      <br>
+
+      <div>
+        <div class="likeCard" style="background-image: url(../../assets/images/img-1.png); background-size: 100%;">
+          <div style="padding-left: 30px; padding-top: 35px;">
+            <ion-text style="color: white; font-size: 9vw; font-weight: 700;">{{ txtBalance }}</ion-text> <br>
+            <ion-text style="color: white; font-size: 5vw; font-weight: 300;">Uangku</ion-text>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+
+    <div style="background-color: #ffffff; border-radius: 20px 20px 0px 0px; " class="asal">
+      <hr style="height: 25px; margin: 0px;">
+      <ion-row style="margin-right: 16px;">
+        <ion-col size="8" style="padding-left: 0px;">
+          <ion-text style="font-size: 20px; font-weight: 700; color: #2c365a" class="ion-padding">Transaksi Terakhir
+          </ion-text>
+        </ion-col>
+        <ion-col size="4" class="ion-text-end" (click)="LihatLaporanTransaksi()">
+          <ion-text style="font-size: 12px; color: orangered;">Lihat Semua</ion-text>
+        </ion-col>
+      </ion-row>
+      <br>
+
+      <div *ngFor="let transaksiData of transaksiDataList">
+        <div *ngIf="transaksiData.jenisKategori == 'Pemasukan'">
+          <ion-card class="ion-no-padding ion-no-margin" button (click)="EditTransaksi(transaksiData)">
+            <ion-item lines="none" color="translucent">
+              <div class="IconAdd">
+                <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
+              </div>
+              <span style="padding-left: 16px;"> </span>
+              <ion-label>
+                <ion-text style="font-weight: 700; color: #38465F;">{{ transaksiData.namaTransaksi }}</ion-text> <br>
+                <ion-text style="font-size: 12px; color: #38465F;">{{ transaksiData.kategori }}</ion-text>
+              </ion-label>
+              <ion-button fill="clear" slot="end" disable style="color: #38465F;">{{ transaksiData.nominalString }}
+              </ion-button>
+            </ion-item>
+          </ion-card>
+          <hr style="height: 16px; margin: 0px;">
+        </div>
+
+        <div *ngIf="transaksiData.jenisKategori == 'Pengeluaran'">
+          <ion-card class="ion-no-padding ion-no-margin" button (click)="EditTransaksi(transaksiData)">
+            <ion-item lines="none" color="translucent">
+              <div class="IconRemove">
+                <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
+              </div>
+              <span style="padding-left: 16px;"> </span>
+              <ion-label>
+                <ion-text style="font-weight: 700; color: #38465F;">{{ transaksiData.namaTransaksi }}</ion-text> <br>
+                <ion-text style="font-size: 12px; color: #38465F;">{{ transaksiData.kategori }}</ion-text>
+              </ion-label>
+              <ion-button fill="clear" slot="end" disable style="color: #38465F;">-{{ transaksiData.nominalString }}
+              </ion-button>
+            </ion-item>
+          </ion-card>
+          <hr style="height: 16px; margin: 0px;">
+        </div>
+      </div>
+
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="TambahTransaksi()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
+
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+  <div *ngIf="isPageKategori" class="pageKategori">
+    <br>
+    <br>
+
+    <ion-row style="padding: 0px 16px; ">
+      <ion-col size="3">
+        <ion-buttons>
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
+        <ion-text style="font-size: 20px; font-weight: 500;">Kategori</ion-text>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+      </ion-col>
+    </ion-row>
+
+    <div *ngFor="let kategoriData of kategoriDataList">
+      <div *ngIf="kategoriData.jenisKategori == 'Pemasukan'">
+        <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        <div style="padding: 0px 16px">
+          <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+            <ion-item lines="none" color="rid-white">
+              <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                <ion-col style="padding-left: 0px; display: block;">
+                  <div style="padding: 10px 0px;">
+                    <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text><br>
+                    <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                    <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                  </div>
+                </ion-col>
+              </div>
+
+              <div class="IconAdd">
+                <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
+              </div>
+
+            </ion-item>
+
+            <ion-item-options side="end">
+              <ion-item-option (click)="EditKategori(kategoriData)" expandable>Edit</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+      </div>
+
+      <div *ngIf="kategoriData.jenisKategori == 'Pengeluaran'">
+        <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        <div style="padding: 0px 16px;">
+          <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+            <ion-item lines="none" color="rid-white">
+              <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                <ion-col style="padding-left: 0px; display: block;">
+                  <div style="padding: 10px 0px;">
+                    <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text><br>
+                    <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                    <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                  </div>
+                </ion-col>
+              </div>
+
+              <div class="IconRemove">
+                <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
+              </div>
+
+            </ion-item>
+
+            <ion-item-options side="end">
+              <ion-item-option (click)="EditKategori(kategoriData)" expandable>Edit</ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerKategori">
+      <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahKategori()">
+        <ion-col size="12" class="btnTambah2" style="background-color: #F2E8E9;">
+          <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+          <ion-text style="color: #B87781;">Tambah Kategori</ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <div *ngIf="isPageLaporanBulanan" class="ion-padding" class="pageLaporanBulanan">
+    <br>
+    <br>
+
+    <ion-row style="padding: 0px 16px; ">
+      <ion-col size="3">
+        <ion-buttons>
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
+        <ion-text style="font-size: 20px; font-weight: 500;">Laporan Bulanan</ion-text>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+      </ion-col>
+    </ion-row>
+
+    <div class="ion-padding">
+      <ion-item color="rid-goodblue-one" class="border" lines="none">
+        <ion-select mode="ios" interface="action-sheet" (ionChange)="FilterChanged()" [(ngModel)]="filterBulanTahun">
+          <ion-select-option *ngFor="let x of laporanTransaksiDataListInMonth" [value]="x.filterBulanTahun">
+            {{x.filterBulanTahun}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div *ngFor="let laporanTransaksiDataInDay of laporanTransaksiDataListInDay">
+      <ion-text style="padding: 16px; font-weight: 500;">{{laporanTransaksiDataInDay.transaksiInDay}}</ion-text>
+      <br>
+      <br>
+
+      <div *ngFor="let transaksiData of laporanTransaksiDataInDay.transaksiDataList">
+        <div *ngIf="transaksiData.jenisKategori == 'Pemasukan'">
+          <ion-card class="ion-no-padding ion-no-margin" style="background-color: #EBF5FF;">
+            <ion-item lines="none" color="translucent">
+              <div class="IconAdd">
+                <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
+              </div>
+              <span style="padding-left: 16px;"> </span>
+              <ion-label>
+                <ion-text style="font-weight: 700; color: #38465F;">{{ transaksiData.namaTransaksi }}</ion-text> <br>
+                <ion-text style="font-size: 12px; color: #38465F;">{{ transaksiData.kategori }}</ion-text>
+              </ion-label>
+              <ion-button fill="clear" slot="end" disable style="color: #38465F;">{{ transaksiData.nominalString }}
+              </ion-button>
+            </ion-item>
+          </ion-card>
+          <hr style="height: 16px; margin: 0px;">
+        </div>
+
+        <div *ngIf="transaksiData.jenisKategori == 'Pengeluaran'">
+          <ion-card class="ion-no-padding ion-no-margin" style="background-color: #EBF5FF;">
+            <ion-item lines="none" color="translucent">
+              <div class="IconRemove">
+                <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
+              </div>
+              <span style="padding-left: 16px;"> </span>
+              <ion-label>
+                <ion-text style="font-weight: 700; color: #38465F;">{{ transaksiData.namaTransaksi }}</ion-text> <br>
+                <ion-text style="font-size: 12px; color: #38465F;">{{ transaksiData.kategori }}</ion-text>
+              </ion-label>
+              <ion-button fill="clear" slot="end" disable style="color: #38465F;">-{{ transaksiData.nominalString }}
+              </ion-button>
+            </ion-item>
+          </ion-card>
+          <hr style="height: 16px; margin: 0px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+  <div *ngIf="isPageTentang" class="ion-padding" class="pageTentang">
+    <br>
+    <ion-row style="padding: 0px 16px; ">
+      <ion-col size="3">
+        <ion-buttons>
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center ion-align-self-center">
+        <ion-text style="font-size: 20px; font-weight: 500;">Tentang</ion-text>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+      </ion-col>
+    </ion-row>
+
+    <br>
+    <br>
+
+    <div>
+      <div class="likeCard" style="background-image: url(../../assets/images/img-2.png); background-size: 100%;">
+        <div style="padding-left: 30px; padding-top: 35px;">
+          <ion-text style="color: white; font-size: 9vw; font-weight: 700;">DompetKu</ion-text> <br>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="ion-padding">
+      <ion-text style="font-size: 24px; font-weight: 700; color: #38465F;">DompetKu</ion-text>
+      <hr style="margin-bottom: 5px;">
+      <ion-text style="font-size: 14px; color: #38465F;">Merupakan aplikasi eWallet</ion-text>
+    </div>
+    <br>
+
+  </div>
+
 </ion-content>

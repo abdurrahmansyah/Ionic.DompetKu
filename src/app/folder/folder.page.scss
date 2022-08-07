@@ -1,28 +1,193 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
+ion-content {
+  --ion-background-color: var(--ion-color-rid-goodblue-four);
 }
 
-#container {
-  text-align: center;
+// START PAGE HOME //
+
+.pageHome {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  ion-menu-button {
+    color: var(--ion-color-rid-goodblue-four);
+    background-color: var(--ion-color-rid-goodblue-two);
+    border-radius: 10px;
+  }
+
+  .likeCard {
+    width: 100%;
+    height: 35vw;
+    border-radius: 20px;
+  }
+}
+
+.asal {
+  flex-grow: 1 !important;
+}
+
+ion-card {
+  --background: #ffffff;
+  box-shadow: none;
+}
+
+.analytics {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll {
+    // overflow: auto;
+
+    .container2 {
+      display: inline-flex;
+      width: 100%;
+      height: fit-content;
+      border-radius: 8px;
+      top: 0;
+
+      .invisible-card {
+        background: transparent;
+        box-shadow: none;
+
+        .statusB {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.IconRemove {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 10px;
+  font-size: x-large;
+  background-color: #cc0814;
+  height: 50px;
+  width: 50px;
+}
+
+.IconAdd {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 10px;
+  font-size: x-large;
+  background-color: #28c965;
+  height: 50px;
+  width: 50px;
+}
+
+// END PAGE HOME //
+
+// START PAGE KATEGORI
+
+.pageKategori {
+  ion-menu-button {
+    color: var(--ion-color-rid-goodblue-four);
+    background-color: var(--ion-color-rid-goodblue-two);
+    border-radius: 10px;
+  }
+
+  .footerKategori {
+    height: 82px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: var(--ion-color-rid-goodblue-four);
+  }
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.btnTambah {
+  // width: 100%;
+  height: 50px;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+  z-index: 1000;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.btnTambah2 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
+// END PAGE KATEGORI
+
+// START PAGE LAPORAN BULANAN
+
+.pageLaporanBulanan {
+  ion-menu-button {
+    color: var(--ion-color-rid-goodblue-four);
+    background-color: var(--ion-color-rid-goodblue-two);
+    border-radius: 10px;
+  }
 }
 
-#container a {
-  text-decoration: none;
+.border {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
 }
+
+.borderSolid {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+  background-color: var(--ion-color-rid-goodblue-one);
+  height: 100%;
+}
+
+// END PAGE LAPORAN BULANAN
+
+// START PAGE TENTANG
+
+.pageTentang {
+  ion-menu-button {
+    color: var(--ion-color-rid-goodblue-four);
+    background-color: var(--ion-color-rid-goodblue-two);
+    border-radius: 10px;
+  }
+
+  .likeCard {
+    width: 75%;
+    height: 87vw;
+    border-radius: 0px 20px 20px 0px;
+  }
+}
+
+.border {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+}
+
+.borderSolid {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+  background-color: var(--ion-color-rid-goodblue-one);
+  height: 100%;
+}
+
+// END PAGE TENTANG

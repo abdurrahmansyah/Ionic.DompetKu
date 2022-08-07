@@ -1,0 +1,103 @@
+<div>
+  <div class="contentView">
+    <ion-item lines="none" button (click)="CloseTransaksi()">
+      <ion-icon style="font-size: 30px;" color="rid-goodblue-one" name="close"></ion-icon>
+    </ion-item>
+  
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text style="font-size: 20px; font-weight: 700; color: var(--ion-color-rid-goodblue-one);">Tambah Transaksi
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <form [formGroup]="credentials">
+      <div class="input-group" style="padding-top: 10px;">
+
+        <ion-item class="border" lines="none">
+          <ion-input type="text" placeholder="Nama Transaksi" formControlName="namaTransaksi"></ion-input>
+        </ion-item>
+        <div *ngIf="(namaTransaksi.dirty || namaTransaksi.touched) && namaTransaksi.errors" class="errors">
+          <span *ngIf="namaTransaksi.errors?.required">Nama Transaksi Tidak Boleh Kosong</span>
+          <span *ngIf="namaTransaksi.errors?.pattern">Format Nama Transaksi Salah</span>
+        </div>
+        <br>
+
+        <ion-item class="border" lines="none">
+          <ion-label>jenis Kategori</ion-label>
+          <ion-select mode="ios" formControlName="jenisKategori">
+            <ion-select-option value="Pemasukan">Pemasukan</ion-select-option>
+            <ion-select-option value="Pengeluaran">Pengeluaran</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="(jenisKategori.dirty || jenisKategori.touched) && jenisKategori.errors" class="errors">
+          <span *ngIf="jenisKategori.errors?.required">Jenis Kategori Tidak Boleh Kosong</span>
+        </div>
+        <br>
+
+        <ion-item class="border" lines="none">
+          <ion-label>Kategori</ion-label>
+          <ion-select mode="ios" formControlName="kategori">
+            <ion-select-option *ngFor="let x of kategoriList" [value]="x.id">{{x.id}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="(kategori.dirty || kategori.touched) && kategori.errors" class="errors">
+          <span *ngIf="kategori.errors?.required">Kategori Tidak Boleh Kosong</span>
+        </div>
+        <br>
+
+        <ion-item class="border" lines="none">
+          <ion-input type="text" placeholder="Nominal" formControlName="nominal"></ion-input>
+        </ion-item>
+        <div *ngIf="(nominal.dirty || nominal.touched) && nominal.errors" class="errors">
+          <span *ngIf="nominal.errors?.required">Nominal Tidak Boleh Kosong</span>
+          <span *ngIf="nominal.errors?.pattern">Format Nominal Salah</span>
+        </div>
+        <br>
+
+        <ion-row>
+          <ion-col size="8" style="padding: 0px;">
+            <ion-item class="border" lines="none">
+              <ion-input type="text" placeholder="Tanggal" formControlName="tanggal"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="4" class="ion-text-end ion-align-self-center" style="padding: 0px 0px 0px 16px; height: 100%;">
+            <div button class="borderSolid ion-text-center" id="date">
+              <ion-popover trigger="date">
+                <ng-template>
+                  <ion-datetime mode="ios" presentation="date" (ionChange)="showdate($event)" locale="en-US"></ion-datetime>
+                </ng-template>
+              </ion-popover>
+              <ion-icon style="font-size: xx-large; color: #ffffff;" name="calendar-outline"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="(tanggal.dirty || tanggal.touched) && tanggal.errors" class="errors">
+          <span *ngIf="tanggal.errors?.required">Lampiran Tidak Boleh Kosong</span>
+        </div>
+        <br>
+
+        <ion-item class="border" lines="none">
+          <ion-textarea type="text" placeholder="Keterangan" formControlName="ket">
+          </ion-textarea>
+        </ion-item>
+        <div *ngIf="(ket.dirty || ket.touched) && ket.errors" class="errors">
+          <span *ngIf="ket.errors?.required">Keterangan Tidak Boleh Kosong</span>
+        </div>
+
+      </div>
+
+      <hr style="height: 12px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button *ngIf="isTambahTransaksi" shape="round" [disabled]="!credentials.valid" color="rid-goodblue-one" (click)="TambahTransaksi()">Tambah Transaksi
+          </ion-button>
+          <ion-button *ngIf="!isTambahTransaksi" shape="round" [disabled]="!credentials.valid" color="rid-goodblue-one" (click)="EditTransaksi()">Edit Transaksi
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</div>
